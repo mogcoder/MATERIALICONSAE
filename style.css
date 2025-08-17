@@ -1,0 +1,2780 @@
+/* Using local system fonts for Material Symbols */
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    src: local('Material Symbols Outlined'),
+         local('MaterialSymbolsOutlined-Regular'),
+         local('Material Icons'),
+         local('MaterialIcons-Regular'),
+         url('fonts/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].woff2') format('woff2'),
+         url('fonts/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf') format('truetype');
+    font-weight: 100 700; /* variable font axis range */
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Material Symbols Rounded';
+    src: local('Material Symbols Rounded'),
+         local('MaterialSymbolsRounded-Regular'),
+         local('Material Icons Round'),
+         local('MaterialIconsRound-Regular'),
+         url('fonts/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].woff2') format('woff2'),
+         url('fonts/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf') format('truetype');
+    font-weight: 100 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Material Symbols Sharp';
+    src: local('Material Symbols Sharp'),
+         local('MaterialSymbolsSharp-Regular'),
+         local('Material Icons Sharp'),
+         local('MaterialIconsSharp-Regular'),
+         url('fonts/MaterialSymbolsSharp[FILL,GRAD,opsz,wght].woff2') format('woff2'),
+         url('fonts/MaterialSymbolsSharp[FILL,GRAD,opsz,wght].ttf') format('truetype');
+    font-weight: 100 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #2b2b2b;
+    color: #ffffff;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    padding: 20px;
+    background: #2a2a2a;
+    color: #ffffff;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.controls {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #333333;
+    border-radius: 8px;
+    border: 1px solid #555;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.control-group.search-group {
+    flex: 2;
+    min-width: 250px;
+}
+
+.control-group.view-controls {
+    flex: 0 0 auto;
+    min-width: 150px;
+}
+
+.control-group label {
+    font-size: 12px;
+    color: #cccccc;
+    min-width: 70px;
+    white-space: nowrap;
+}
+
+.font-selector {
+    padding: 6px 8px;
+    background: #2a2a2a;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 12px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.search-input {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #0078d4;
+    box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.3);
+}
+
+.search-input::placeholder {
+    color: #888;
+}
+
+.reset-button {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #0078d4;
+    border-radius: 4px;
+    background-color: #0078d4;
+    color: #ffffff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.reset-button:hover {
+    background-color: #106ebe;
+}
+
+.reset-button:active {
+    background-color: #005a9e;
+}
+
+.font-selector:focus {
+    outline: none;
+    border-color: #007acc;
+}
+
+.icons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 50px);
+    gap: 8px;
+    height: 100%;
+    overflow-y: auto;
+    padding: 5px;
+    justify-content: space-evenly;
+}
+
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #3a3a3a;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #ffffff;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    gap: 2px;
+    overflow: hidden;
+}
+
+.icon-symbol {
+    font-size: 32px;
+    line-height: 1;
+}
+
+/* Material Symbols with full font-variation-settings support */
+.icon-symbol {
+    /* Font rendering optimizations */
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* font-variation-settings will be applied via JavaScript inline styles */
+}
+
+.icon-name {
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    color: #cccccc;
+    word-break: break-word;
+    text-align: center;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.icon-item:hover {
+    background-color: #505050;
+    transform: scale(1.1);
+}
+
+.icon-item:active {
+    background-color: #1976d2;
+}
+
+/* Scrollbar customization */
+.icons-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.icons-grid::-webkit-scrollbar-track {
+    background: #2b2b2b;
+}
+
+.icons-grid::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+
+.icons-grid::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+/* Search container styles */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.clear-search-btn {
+    position: absolute;
+    right: 5px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+.clear-search-btn:hover {
+    background: #444;
+    color: #fff;
+}
+
+/* View controls styles */
+.view-controls {
+    align-items: center;
+}
+
+.view-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.view-btn {
+    padding: 6px 12px;
+    background: #2a2a2a;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #cccccc;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 32px;
+}
+
+.view-btn:hover {
+    background: #3a3a3a;
+    border-color: #666;
+}
+
+.view-btn.active {
+    background: #0078d4;
+    border-color: #0078d4;
+    color: #ffffff;
+}
+
+/* Checkbox styles */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #cccccc;
+    gap: 8px;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 16px;
+    height: 16px;
+    background: #2a2a2a;
+    border: 1px solid #555;
+    border-radius: 3px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: #0078d4;
+    border-color: #0078d4;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Icon grid size variations */
+.icons-grid.small {
+    grid-template-columns: repeat(auto-fill, 35px);
+    gap: 4px;
+}
+
+.icons-grid.small .icon-item {
+    width: 35px;
+    height: 35px;
+    padding: 4px;
+}
+
+.icons-grid.small .icon-symbol {
+    font-size: 20px;
+}
+
+.icons-grid.small .icon-name {
+    font-size: 8px;
+}
+
+.icons-grid.medium {
+    grid-template-columns: repeat(auto-fill, 50px);
+    gap: 8px;
+}
+
+.icons-grid.medium .icon-item {
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+}
+
+.icons-grid.medium .icon-symbol {
+    font-size: 32px;
+}
+
+.icons-grid.medium .icon-name {
+    font-size: 10px;
+}
+
+.icons-grid.large {
+    grid-template-columns: repeat(auto-fill, 70px);
+    gap: 12px;
+}
+
+.icons-grid.large .icon-item {
+    width: 70px;
+    height: 70px;
+    padding: 12px;
+}
+
+.icons-grid.large .icon-symbol {
+    font-size: 48px;
+}
+
+.icons-grid.large .icon-name {
+    font-size: 12px;
+}
+
+/* Hide names option */
+.icons-grid.hide-names .icon-name {
+    display: none;
+}
+
+.icons-grid.hide-names .icon-category {
+    display: none;
+}
+
+/* Icon category styles */
+.icon-category {
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    color: #888;
+    text-align: center;
+    opacity: 0.7;
+}
+
+/* Empty state styles */
+.empty-state {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    color: #888;
+    min-height: 200px;
+}
+
+.empty-icon {
+    font-size: 64px !important;
+    color: #555;
+    margin-bottom: 16px;
+    font-family: 'Material Symbols Outlined', 'Material Icons';
+}
+
+.empty-state h3 {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.empty-state p {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+/* Control group spacing improvements */
+.control-group {
+    margin-bottom: 12px;
+}
+
+.control-group:last-child {
+    margin-bottom: 0;
+}
+
+.search-group {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.search-group label {
+    margin-bottom: 5px;
+}
+
+/* Loading States */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(42, 42, 42, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+.loading-content {
+    text-align: center;
+    padding: 40px;
+    background: #333;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid #444;
+    max-width: 400px;
+    width: 90%;
+}
+
+.loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid #444;
+    border-top: 4px solid #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.loading-progress {
+    width: 100%;
+    height: 6px;
+    background: #444;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #45a049);
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.3s ease;
+    animation: progressPulse 2s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Error States */
+.error-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(42, 42, 42, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    backdrop-filter: blur(2px);
+}
+
+.error-content {
+    text-align: center;
+    padding: 40px;
+    background: #333;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid #f44336;
+    max-width: 450px;
+    width: 90%;
+}
+
+.error-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 2px 4px rgba(244, 67, 54, 0.3));
+}
+
+.error-title {
+    font-size: 20px;
+    color: #f44336;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.error-message {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.error-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.retry-button, .fallback-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 100px;
+}
+
+.retry-button {
+    background: #4CAF50;
+    color: white;
+}
+
+.retry-button:hover {
+    background: #45a049;
+    transform: translateY(-1px);
+}
+
+.fallback-button {
+    background: #666;
+    color: white;
+}
+
+.fallback-button:hover {
+    background: #777;
+    transform: translateY(-1px);
+}
+
+/* Toast Messages */
+.message-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    border: 1px solid #444;
+    z-index: 1002;
+    animation: slideInRight 0.3s ease;
+    max-width: 350px;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 10px;
+}
+
+.toast-icon {
+    font-size: 18px;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.toast-message {
+    flex: 1;
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.4;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+    background: #444;
+    color: #fff;
+}
+
+/* Toast variants */
+.toast-success .toast-icon {
+    color: #4CAF50;
+}
+
+.toast-error .toast-icon {
+    color: #f44336;
+}
+
+.toast-warning .toast-icon {
+    color: #ff9800;
+}
+
+.toast-info .toast-icon {
+    color: #2196F3;
+}
+
+/* Loading state for icons grid */
+.icons-grid.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.icons-grid.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    border: 3px solid #444;
+    border-top: 3px solid #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+/* Responsive adjustments for loading states */
+@media (max-width: 480px) {
+    .loading-content, .error-content {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    .error-actions {
+        flex-direction: column;
+    }
+    
+    .retry-button, .fallback-button {
+        width: 100%;
+    }
+    
+    .message-toast {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #3a3a3a;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #ffffff;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.icon-symbol {
+  font-size: 32px;
+  line-height: 1em; /* match the visual box to font-size */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em; /* tightly bound to font-size */
+  height: 1em;
+  overflow: hidden; /* clip long glyphs */
+  text-rendering: optimizeLegibility;
+}
+
+/* size variants already adjust font-size on .icon-symbol through parent classes
+   ensure icon box scales consistently */
+.icons-grid.small .icon-symbol,
+.icons-grid.medium .icon-symbol,
+.icons-grid.large .icon-symbol {
+  width: 1em;
+  height: 1em;
+}
+.icon-name {
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  color: #cccccc;
+  word-break: break-word;
+  text-align: center;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon-item:hover {
+  background-color: #505050;
+  transform: scale(1.1);
+}
+
+.icon-item:active {
+  background-color: #1976d2;
+}
+
+/* Scrollbar customization */
+.icons-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.icons-grid::-webkit-scrollbar-track {
+  background: #2b2b2b;
+}
+
+.icons-grid::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.icons-grid::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Search container styles */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 5px;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.clear-search-btn:hover {
+  background: #444;
+  color: #fff;
+}
+
+/* View controls styles */
+.view-controls {
+  align-items: center;
+}
+
+.view-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.view-btn {
+  padding: 6px 12px;
+  background: #2a2a2a;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: #cccccc;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 32px;
+}
+
+.view-btn:hover {
+  background: #3a3a3a;
+  border-color: #666;
+}
+
+.view-btn.active {
+  background: #0078d4;
+  border-color: #0078d4;
+  color: #ffffff;
+}
+
+/* === Main Icons Grid Layout === */
+.icons-grid {
+  display: grid;
+  gap: 12px;
+  padding: 8px;
+  overflow-y: auto;
+  max-height: calc(100vh - 280px);
+}
+
+/* Responsive grid columns based on size */
+.icons-grid.small { 
+  grid-template-columns: repeat(auto-fill, minmax(58px, 1fr)); 
+}
+.icons-grid.medium { 
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); 
+}
+.icons-grid.large { 
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); 
+}
+
+/* Icon Item Card Design */
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #353535 0%, #2a2a2a 100%);
+  border: 1px solid #454545;
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 2px 8px rgba(0,0,0,0.3),
+    0 1px 2px rgba(0,0,0,0.2);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.icon-item:hover {
+  background: linear-gradient(145deg, #404040 0%, #333333 100%);
+  border-color: #606060;
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 4px 16px rgba(0,0,0,0.35),
+    0 2px 4px rgba(0,0,0,0.25);
+  transform: translateY(-1px);
+}
+
+.icon-item:active {
+  background: linear-gradient(145deg, #2a5ca8 0%, #1e4a8c 100%);
+  border-color: #2a5ca8;
+  transform: translateY(0px);
+}
+
+.icon-item:focus-visible {
+  outline: none;
+  box-shadow: 
+    0 0 0 2px #0078d4,
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 4px 16px rgba(0,0,0,0.35);
+}
+
+/* Icon Symbol Enhanced */
+.icon-symbol {
+  font-family: 'Material Symbols Outlined', 'Material Symbols Rounded', 'Material Symbols Sharp', 'Material Icons';
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2em;
+  height: 1.2em;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga" 1;
+  overflow: visible;
+  transform: translateZ(0); /* GPU acceleration */
+}
+
+/* Size-specific icon styling */
+.icons-grid.small .icon-symbol { 
+  font-size: 24px;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.icons-grid.medium .icon-symbol { 
+  font-size: 32px;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 32;
+}
+.icons-grid.large .icon-symbol { 
+  font-size: 44px;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 44;
+}
+
+/* Text Labels */
+.icon-name {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #e0e0e0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: center;
+  margin-top: 2px;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+
+.icon-category {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  color: #b0b0b0;
+  opacity: 0.85;
+  text-align: center;
+  margin-top: -2px;
+}
+
+/* Enhanced scrollbar */
+.icons-grid::-webkit-scrollbar { 
+  width: 10px; 
+}
+.icons-grid::-webkit-scrollbar-track { 
+  background: #1e1e1e;
+  border-radius: 5px;
+}
+.icons-grid::-webkit-scrollbar-thumb { 
+  background: linear-gradient(145deg, #555555 0%, #404040 100%);
+  border-radius: 5px;
+  border: 1px solid #333;
+}
+.icons-grid::-webkit-scrollbar-thumb:hover { 
+  background: linear-gradient(145deg, #666666 0%, #505050 100%);
+}
+ */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #cccccc;
+  gap: 8px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 16px;
+  height: 16px;
+  background: #2a2a2a;
+  border: 1px solid #555;
+  border-radius: 3px;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+  background: #0078d4;
+  border-color: #0078d4;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+  content: '✓';
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Icon grid size variations */
+.icons-grid.small {
+  grid-template-columns: repeat(auto-fill, 35px);
+  gap: 4px;
+}
+
+.icons-grid.small .icon-item {
+  width: 35px;
+  height: 35px;
+  padding: 4px;
+}
+
+.icons-grid.small .icon-symbol {
+  font-size: 20px;
+}
+
+.icons-grid.small .icon-name {
+  font-size: 8px;
+}
+
+.icons-grid.medium {
+  grid-template-columns: repeat(auto-fill, 50px);
+  gap: 8px;
+}
+
+.icons-grid.medium .icon-item {
+  width: 50px;
+  height: 50px;
+  padding: 8px;
+}
+
+.icons-grid.medium .icon-symbol {
+  font-size: 32px;
+}
+
+.icons-grid.medium .icon-name {
+  font-size: 10px;
+}
+
+.icons-grid.large {
+  grid-template-columns: repeat(auto-fill, 70px);
+  gap: 12px;
+}
+
+.icons-grid.large .icon-item {
+  width: 70px;
+  height: 70px;
+  padding: 12px;
+}
+
+.icons-grid.large .icon-symbol {
+  font-size: 48px;
+}
+
+.icons-grid.large .icon-name {
+  font-size: 12px;
+}
+
+/* Hide names option */
+.icons-grid.hide-names .icon-name {
+  display: none;
+}
+
+.icons-grid.hide-names .icon-category {
+  display: none;
+}
+
+/* Icon category styles */
+.icon-category {
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  color: #888;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* Empty state styles */
+.empty-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: #888;
+  min-height: 200px;
+}
+
+.empty-icon {
+  font-size: 64px !important;
+  color: #555;
+  margin-bottom: 16px;
+  font-family: 'Material Symbols Outlined', 'Material Icons';
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  color: #ccc;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+/* Control group spacing improvements */
+.control-group {
+  margin-bottom: 12px;
+}
+
+.control-group:last-child {
+  margin-bottom: 0;
+}
+
+.search-group {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.search-group label {
+  margin-bottom: 5px;
+}
+
+/* Loading States */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(42, 42, 42, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.loading-content {
+  text-align: center;
+  padding: 40px;
+  background: #333;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid #444;
+  max-width: 400px;
+  width: 90%;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #444;
+  border-top: 4px solid #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.loading-progress {
+  width: 100%;
+  height: 6px;
+  background: #444;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #45a049);
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+  animation: progressPulse 2s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Error States */
+.error-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(42, 42, 42, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  backdrop-filter: blur(2px);
+}
+
+.error-content {
+  text-align: center;
+  padding: 40px;
+  background: #333;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid #f44336;
+  max-width: 450px;
+  width: 90%;
+}
+
+.error-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 2px 4px rgba(244, 67, 54, 0.3));
+}
+
+.error-title {
+  font-size: 20px;
+  color: #f44336;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.error-message {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.error-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.retry-button, .fallback-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.retry-button {
+  background: #4CAF50;
+  color: white;
+}
+
+.retry-button:hover {
+  background: #45a049;
+  transform: translateY(-1px);
+}
+
+.fallback-button {
+  background: #666;
+  color: white;
+}
+
+.fallback-button:hover {
+  background: #777;
+  transform: translateY(-1px);
+}
+
+/* Toast Messages */
+.message-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid #444;
+  z-index: 1002;
+  animation: slideInRight 0.3s ease;
+  max-width: 350px;
+}
+
+@keyframes slideInRight {
+  from {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 10px;
+}
+
+.toast-icon {
+  font-size: 18px;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.toast-message {
+  flex: 1;
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+  background: #444;
+  color: #fff;
+}
+
+/* Toast variants */
+.toast-success .toast-icon {
+  color: #4CAF50;
+}
+
+.toast-error .toast-icon {
+  color: #f44336;
+}
+
+.toast-warning .toast-icon {
+  color: #ff9800;
+}
+
+.toast-info .toast-icon {
+  color: #2196F3;
+}
+
+/* Loading state for icons grid */
+.icons-grid.loading {
+  opacity: 0.6;
+  pointer-events: none;
+  position: relative;
+}
+
+.icons-grid.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  border: 3px solid #444;
+  border-top: 3px solid #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+/* Responsive adjustments for loading states */
+@media (max-width: 480px) {
+    .loading-content, .error-content {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    .error-actions {
+        flex-direction: column;
+    }
+    
+    .retry-button, .fallback-button {
+        width: 100%;
+    }
+    
+    .message-toast {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #3a3a3a;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #ffffff;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.icon-symbol {
+  font-size: 32px;
+  line-height: 1em; /* match the visual box to font-size */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em; /* tightly bound to font-size */
+  height: 1em;
+  overflow: hidden; /* clip long glyphs */
+  text-rendering: optimizeLegibility;
+}
+
+/* size variants already adjust font-size on .icon-symbol through parent classes
+   ensure icon box scales consistently */
+.icons-grid.small .icon-symbol,
+.icons-grid.medium .icon-symbol,
+.icons-grid.large .icon-symbol {
+  width: 1em;
+  height: 1em;
+}
+.icon-name {
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  color: #cccccc;
+  word-break: break-word;
+  text-align: center;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon-item:hover {
+  background-color: #505050;
+  transform: scale(1.1);
+}
+
+.icon-item:active {
+  background-color: #1976d2;
+}
+
+/* Scrollbar customization */
+.icons-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.icons-grid::-webkit-scrollbar-track {
+  background: #2b2b2b;
+}
+
+.icons-grid::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.icons-grid::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Search container styles */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 5px;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.clear-search-btn:hover {
+  background: #444;
+  color: #fff;
+}
+
+/* View controls styles */
+.view-controls {
+  align-items: center;
+}
+
+.view-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.view-btn {
+  padding: 6px 12px;
+  background: #2a2a2a;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: #cccccc;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 32px;
+}
+
+.view-btn:hover {
+  background: #3a3a3a;
+  border-color: #666;
+}
+
+.view-btn.active {
+  background: #0078d4;
+  border-color: #0078d4;
+  color: #ffffff;
+}
+
+/* Checkbox styles */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #cccccc;
+  gap: 8px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 16px;
+  height: 16px;
+  background: #2a2a2a;
+  border: 1px solid #555;
+  border-radius: 3px;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+  background: #0078d4;
+  border-color: #0078d4;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+  content: '✓';
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Icon grid size variations */
+.icons-grid.small {
+  grid-template-columns: repeat(auto-fill, 35px);
+  gap: 4px;
+}
+
+.icons-grid.small .icon-item {
+  width: 35px;
+  height: 35px;
+  padding: 4px;
+}
+
+.icons-grid.small .icon-symbol {
+  font-size: 20px;
+}
+
+.icons-grid.small .icon-name {
+  font-size: 8px;
+}
+
+.icons-grid.medium {
+  grid-template-columns: repeat(auto-fill, 50px);
+  gap: 8px;
+}
+
+.icons-grid.medium .icon-item {
+  width: 50px;
+  height: 50px;
+  padding: 8px;
+}
+
+.icons-grid.medium .icon-symbol {
+  font-size: 32px;
+}
+
+.icons-grid.medium .icon-name {
+  font-size: 10px;
+}
+
+.icons-grid.large {
+  grid-template-columns: repeat(auto-fill, 70px);
+  gap: 12px;
+}
+
+.icons-grid.large .icon-item {
+  width: 70px;
+  height: 70px;
+  padding: 12px;
+}
+
+.icons-grid.large .icon-symbol {
+  font-size: 48px;
+}
+
+.icons-grid.large .icon-name {
+  font-size: 12px;
+}
+
+/* Hide names option */
+.icons-grid.hide-names .icon-name {
+  display: none;
+}
+
+.icons-grid.hide-names .icon-category {
+  display: none;
+}
+
+/* Icon category styles */
+.icon-category {
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  color: #888;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* Empty state styles */
+.empty-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: #888;
+  min-height: 200px;
+}
+
+.empty-icon {
+  font-size: 64px !important;
+  color: #555;
+  margin-bottom: 16px;
+  font-family: 'Material Symbols Outlined', 'Material Icons';
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  color: #ccc;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+/* Control group spacing improvements */
+.control-group {
+  margin-bottom: 12px;
+}
+
+.control-group:last-child {
+  margin-bottom: 0;
+}
+
+.search-group {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.search-group label {
+  margin-bottom: 5px;
+}
+
+/* Loading States */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(42, 42, 42, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.loading-content {
+  text-align: center;
+  padding: 40px;
+  background: #333;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid #444;
+  max-width: 400px;
+  width: 90%;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #444;
+  border-top: 4px solid #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.loading-progress {
+  width: 100%;
+  height: 6px;
+  background: #444;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #45a049);
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+  animation: progressPulse 2s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Error States */
+.error-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(42, 42, 42, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  backdrop-filter: blur(2px);
+}
+
+.error-content {
+  text-align: center;
+  padding: 40px;
+  background: #333;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid #f44336;
+  max-width: 450px;
+  width: 90%;
+}
+
+.error-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 2px 4px rgba(244, 67, 54, 0.3));
+}
+
+.error-title {
+  font-size: 20px;
+  color: #f44336;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.error-message {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.error-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.retry-button, .fallback-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.retry-button {
+  background: #4CAF50;
+  color: white;
+}
+
+.retry-button:hover {
+  background: #45a049;
+  transform: translateY(-1px);
+}
+
+.fallback-button {
+  background: #666;
+  color: white;
+}
+
+.fallback-button:hover {
+  background: #777;
+  transform: translateY(-1px);
+}
+
+/* Toast Messages */
+.message-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid #444;
+  z-index: 1002;
+  animation: slideInRight 0.3s ease;
+  max-width: 350px;
+}
+
+@keyframes slideInRight {
+  from {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 10px;
+}
+
+.toast-icon {
+  font-size: 18px;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.toast-message {
+  flex: 1;
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+  background: #444;
+  color: #fff;
+}
+
+/* Toast variants */
+.toast-success .toast-icon {
+  color: #4CAF50;
+}
+
+.toast-error .toast-icon {
+  color: #f44336;
+}
+
+.toast-warning .toast-icon {
+  color: #ff9800;
+}
+
+.toast-info .toast-icon {
+  color: #2196F3;
+}
+
+/* Loading state for icons grid */
+.icons-grid.loading {
+  opacity: 0.6;
+  pointer-events: none;
+  position: relative;
+}
+
+.icons-grid.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  border: 3px solid #444;
+  border-top: 3px solid #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+/* Responsive adjustments for loading states */
+@media (max-width: 480px) {
+    .loading-content, .error-content {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    .error-actions {
+        flex-direction: column;
+    }
+    
+    .retry-button, .fallback-button {
+        width: 100%;
+    }
+    
+    .message-toast {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #3a3a3a;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #ffffff;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.icon-symbol {
+  font-size: 32px;
+  line-height: 1em; /* match the visual box to font-size */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em; /* tightly bound to font-size */
+  height: 1em;
+  overflow: hidden; /* clip long glyphs */
+  text-rendering: optimizeLegibility;
+}
+
+/* size variants already adjust font-size on .icon-symbol through parent classes
+   ensure icon box scales consistently */
+.icons-grid.small .icon-symbol,
+.icons-grid.medium .icon-symbol,
+.icons-grid.large .icon-symbol {
+  width: 1em;
+  height: 1em;
+}
+.icon-name {
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  color: #cccccc;
+  word-break: break-word;
+  text-align: center;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon-item:hover {
+  background-color: #505050;
+  transform: scale(1.1);
+}
+
+.icon-item:active {
+  background-color: #1976d2;
+}
+
+/* Scrollbar customization */
+.icons-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.icons-grid::-webkit-scrollbar-track {
+  background: #2b2b2b;
+}
+
+.icons-grid::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.icons-grid::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Search container styles */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 5px;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.clear-search-btn:hover {
+  background: #444;
+  color: #fff;
+}
+
+/* View controls styles */
+.view-controls {
+  align-items: center;
+}
+
+.view-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.view-btn {
+  padding: 6px 12px;
+  background: #2a2a2a;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: #cccccc;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 32px;
+}
+
+.view-btn:hover {
+  background: #3a3a3a;
+  border-color: #666;
+}
+
+.view-btn.active {
+  background: #0078d4;
+  border-color: #0078d4;
+  color: #ffffff;
+}
+
+/* Checkbox styles */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #cccccc;
+  gap: 8px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 16px;
+  height: 16px;
+  background: #2a2a2a;
+  border: 1px solid #555;
+  border-radius: 3px;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+  background: #0078d4;
+  border-color: #0078d4;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+  content: '✓';
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Icon grid size variations */
+.icons-grid.small {
+  grid-template-columns: repeat(auto-fill, 35px);
+  gap: 4px;
+}
+
+.icons-grid.small .icon-item {
+  width: 35px;
+  height: 35px;
+  padding: 4px;
+}
+
+.icons-grid.small .icon-symbol {
+  font-size: 20px;
+}
+
+.icons-grid.small .icon-name {
+  font-size: 8px;
+}
+
+.icons-grid.medium {
+  grid-template-columns: repeat(auto-fill, 50px);
+  gap: 8px;
+}
+
+.icons-grid.medium .icon-item {
+  width: 50px;
+  height: 50px;
+  padding: 8px;
+}
+
+.icons-grid.medium .icon-symbol {
+  font-size: 32px;
+}
+
+.icons-grid.medium .icon-name {
+  font-size: 10px;
+}
+
+.icons-grid.large {
+  grid-template-columns: repeat(auto-fill, 70px);
+  gap: 12px;
+}
+
+.icons-grid.large .icon-item {
+  width: 70px;
+  height: 70px;
+  padding: 12px;
+}
+
+.icons-grid.large .icon-symbol {
+  font-size: 48px;
+}
+
+.icons-grid.large .icon-name {
+  font-size: 12px;
+}
+
+/* Hide names option */
+.icons-grid.hide-names .icon-name {
+  display: none;
+}
+
+.icons-grid.hide-names .icon-category {
+  display: none;
+}
+
+/* Icon category styles */
+.icon-category {
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  color: #888;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* Empty state styles */
+.empty-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: #888;
+  min-height: 200px;
+}
+
+.empty-icon {
+  font-size: 64px !important;
+  color: #555;
+  margin-bottom: 16px;
+  font-family: 'Material Symbols Outlined', 'Material Icons';
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  color: #ccc;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+/* Control group spacing improvements */
+.control-group {
+  margin-bottom: 12px;
+}
+
+.control-group:last-child {
+  margin-bottom: 0;
+}
+
+.search-group {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.search-group label {
+  margin-bottom: 5px;
+}
+
+/* Loading States */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(42, 42, 42, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.loading-content {
+  text-align: center;
+  padding: 40px;
+  background: #333;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid #444;
+  max-width: 400px;
+  width: 90%;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #444;
+  border-top: 4px solid #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.loading-progress {
+  width: 100%;
+  height: 6px;
+  background: #444;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #45a049);
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+  animation: progressPulse 2s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Error States */
+.error-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(42, 42, 42, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  backdrop-filter: blur(2px);
+}
+
+.error-content {
+  text-align: center;
+  padding: 40px;
+  background: #333;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid #f44336;
+  max-width: 450px;
+  width: 90%;
+}
+
+.error-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 2px 4px rgba(244, 67, 54, 0.3));
+}
+
+.error-title {
+  font-size: 20px;
+  color: #f44336;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.error-message {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.error-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.retry-button, .fallback-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.retry-button {
+  background: #4CAF50;
+  color: white;
+}
+
+.retry-button:hover {
+  background: #45a049;
+  transform: translateY(-1px);
+}
+
+.fallback-button {
+  background: #666;
+  color: white;
+}
+
+.fallback-button:hover {
+  background: #777;
+  transform: translateY(-1px);
+}
+
+/* Toast Messages */
+.message-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid #444;
+  z-index: 1002;
+  animation: slideInRight 0.3s ease;
+  max-width: 350px;
+}
+
+@keyframes slideInRight {
+  from {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 10px;
+}
+
+.toast-icon {
+  font-size: 18px;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.toast-message {
+  flex: 1;
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+  background: #444;
+  color: #fff;
+}
+
+/* Toast variants */
+.toast-success .toast-icon {
+  color: #4CAF50;
+}
+
+.toast-error .toast-icon {
+  color: #f44336;
+}
+
+.toast-warning .toast-icon {
+  color: #ff9800;
+}
+
+.toast-info .toast-icon {
+  color: #2196F3;
+}
+
+/* Loading state for icons grid */
+.icons-grid.loading {
+  opacity: 0.6;
+  pointer-events: none;
+  position: relative;
+}
+
+.icons-grid.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  border: 3px solid #444;
+  border-top: 3px solid #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+/* Responsive adjustments for loading states */
+@media (max-width: 480px) {
+    .loading-content, .error-content {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    .error-actions {
+        flex-direction: column;
+    }
+    
+    .retry-button, .fallback-button {
+        width: 100%;
+    }
+    
+    .message-toast {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #3a3a3a;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #ffffff;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.icon-symbol {
+  font-size: 32px;
+  line-height: 1em; /* match the visual box to font-size */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em; /* tightly bound to font-size */
+  height: 1em;
+  overflow: hidden; /* clip long glyphs */
+  text-rendering: optimizeLegibility;
+}
+
+/* size variants already adjust font-size on .icon-symbol through parent classes
+   ensure icon box scales consistently */
+.icons-grid.small .icon-symbol,
+.icons-grid.medium .icon-symbol,
+.icons-grid.large .icon-symbol {
+  width: 1em;
+  height: 1em;
+}
+.icon-name {
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  color: #cccccc;
+  word-break: break-word;
+  text-align: center;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon-item:hover {
+  background-color: #505050;
+  transform: scale(1.1);
+}
+
+.icon-item:active {
+  background-color: #1976d2;
+}
+
+/* Scrollbar customization */
+.icons-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.icons-grid::-webkit-scrollbar-track {
+  background: #2b2b2b;
+}
+
+.icons-grid::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.icons-grid::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Search container styles */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 5px;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.clear-search-btn:hover {
+  background: #444;
+  color: #fff;
+}
+
+/* View controls styles */
+.view-controls {
+  align-items: center;
+}
+
+.view-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.view-btn {
+  padding: 6px 12px;
+  background: #2a2a2a;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: #cccccc;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 32px;
+}
+
+.view-btn:hover {
+  background: #3a3a3a;
+  border-color: #666;
+}
+
+.view-btn.active {
+  background: #0078d4;
+  border-color: #0078d4;
+  color: #ffffff;
+}
+
+/* Checkbox styles
