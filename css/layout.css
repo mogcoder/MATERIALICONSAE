@@ -1,0 +1,47 @@
+.container {
+    padding: 20px;
+    background: #2a2a2a;
+    color: #ffffff;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.controls {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #333333;
+    border-radius: 8px;
+    border: 1px solid #555;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 12px;
+}
+
+.control-group:last-child {
+    margin-bottom: 0;
+}
+
+.control-group.search-group {
+    flex: 2;
+    min-width: 250px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.control-group.view-controls {
+    flex: 0 0 auto;
+    min-width: 150px;
+}
+
+.search-group label {
+    margin-bottom: 5px;
+}
