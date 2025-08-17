@@ -1,0 +1,153 @@
+.control-group label {
+    font-size: 12px;
+    color: #cccccc;
+    min-width: 70px;
+    white-space: nowrap;
+}
+
+.font-selector {
+    padding: 6px 8px;
+    background: #2a2a2a;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 12px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.font-selector:focus {
+    outline: none;
+    border-color: #007acc;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #0078d4;
+    box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.3);
+}
+
+.search-input::placeholder {
+    color: #888;
+}
+
+.clear-search-btn {
+    position: absolute;
+    right: 5px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+.clear-search-btn:hover {
+    background: #444;
+    color: #fff;
+}
+
+.reset-button {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #0078d4;
+    border-radius: 4px;
+    background-color: #0078d4;
+    color: #ffffff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.reset-button:hover {
+    background-color: #106ebe;
+}
+
+.reset-button:active {
+    background-color: #005a9e;
+}
+
+.view-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.view-btn {
+    padding: 6px 12px;
+    background: #2a2a2a;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #cccccc;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 32px;
+}
+
+.view-btn:hover {
+    background: #3a3a3a;
+    border-color: #666;
+}
+
+.view-btn.active {
+    background: #0078d4;
+    border-color: #0078d4;
+    color: #ffffff;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #cccccc;
+    gap: 8px;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 16px;
+    height: 16px;
+    background: #2a2a2a;
+    border: 1px solid #555;
+    border-radius: 3px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: #0078d4;
+    border-color: #0078d4;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
